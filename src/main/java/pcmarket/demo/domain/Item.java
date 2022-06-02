@@ -7,8 +7,6 @@ import pcmarket.demo.exception.NotEnoughStockException;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "dtype")
 @Getter
 @Setter
 public class Item {
