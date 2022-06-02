@@ -19,6 +19,17 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    @Transactional
+    void updateItem(Long itemId, Item param) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setPrice(param.getPrice());
+        findItem.setName(param.getName());
+        findItem.setSinger(param.getSinger());
+        findItem.setAlbum(param.getAlbum());
+        findItem.setStockQuantity(param.getStockQuantity());
+        // 영속 상태이기 때문에 여기서 커밋되는 것. flush 날림(바뀐 것 업데이트)
+    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }

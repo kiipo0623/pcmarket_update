@@ -3,13 +3,12 @@ package pcmarket.demo.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pcmarket.demo.domain.Item;
-import pcmarket.demo.domain.Member;
-import pcmarket.demo.domain.Order;
-import pcmarket.demo.domain.OrderItem;
+import pcmarket.demo.domain.*;
 import pcmarket.demo.repository.ItemRepository;
 import pcmarket.demo.repository.MemberRepository;
 import pcmarket.demo.repository.OrderRepository;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -36,5 +35,9 @@ public class OrderService {
     public void cancelOrder(Long orderId) {
         Order order = orderRepository.findOne(orderId);
         order.cancel();
+    }
+
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
     }
 }
