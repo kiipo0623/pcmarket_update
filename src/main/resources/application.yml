@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/2022-1/pcmarket
-    username: sa
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: hyuna
     password:
-    driver-class-name: org.h2.Driver
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
